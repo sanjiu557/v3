@@ -49,6 +49,7 @@ import Tabs from 'S/components/Tabs.vue'
 import { ref, reactive, computed,onMounted, nextTick, watch } from 'vue'
 import {usePointerSwipe ,useAnimate} from '@vueuse/core'
 // publish: 添加滑动层图片，修复滑动切换图片白屏问题
+
 enum picture {
   'swiper-1',
   'swiper-2',
