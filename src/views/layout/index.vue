@@ -23,13 +23,19 @@
         <div ref="parent" class="coverBox w-h-100 absolute z-2 flex justify-center items-center" :style="{left}">
           <div  ref="swiper" :class="{'transition-all  duration-200 ease-linear':!isSwiping}" class="i-mingcute-arrow-right-fill text-6xl   hover:cursor-pointer  font-700" ></div>
         </div>
-        <el-image  class="border-rd-6 w-730px h-498px"   :src="imgUrl" :style="{opacity}"></el-image>
+        <div class="border-rd-6 w-730px h-498px relative" >
+          <img :src="imgUrl" class="w-h-100 object-cover" alt="" :style="{opacity}">
+          <img :src="getImage(picture[index<3?index+1:0])" class="w-h-100 object-cover absolute top-0 left-0 transition-all" alt="" :style="{opacity:(1-opacity)}">
+        </div>
+        
+        <!-- <el-image  class="border-rd-6 w-730px h-498px"   :src="imgUrl" :style="{opacity}">
+           <img :src="imgUrl" alt="" slot="placeholder">
+        </el-image> -->
       </div>
 
     </div>
     <div class="opera flex justify-center items-center m-40">
-      <el-button size="large" ref="animateBtn" class="conic ">
-        <span class="opacity-0">conic gradient</span>
+      <el-button size="large" ref="animateBtn" class="conic" data-name="conic gradient">
       </el-button>
       <!-- <button size="large" class="conic">conic gradient</button> -->
 
@@ -40,8 +46,9 @@
 <script setup lang="ts">
 import logoUrl from 'S/assets/images/logo.png'
 import Tabs from 'S/components/Tabs.vue'
-import { ref, reactive, computed,onMounted, readonly, watch } from 'vue'
+import { ref, reactive, computed,onMounted, nextTick, watch } from 'vue'
 import {usePointerSwipe ,useAnimate} from '@vueuse/core'
+// publish: 添加滑动层图片，修复滑动切换图片白屏问题
 enum picture {
   'swiper-1',
   'swiper-2',
@@ -91,13 +98,15 @@ const next = ()=>{
   }else {
     index.value = 0
   }
-  imgUrl.value = getImage(picture[index.value])
+
+  imgUrl.value =getImage(picture[index.value])
     reset()
+
 }
 
 const keyframes = [
   {backgroundImage:'conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.5) 0deg,rgba(255,255,255,0) 60deg,rgba(255,255,255,0) 310deg,rgba(255,255,255,.5) 360deg)'},
-  {backgroundImage:'conic-gradient(from 360deg at 50% 50%,rgba(255,255,255,.5) 360deg,rgba(255,255,255,0) 300deg,rgba(255,255,255,0) 50deg,rgba(255,255,255,.5) 0deg)'}
+  {backgroundImage:'conic-gradient(to 360deg at 50% 50%,rgba(255,255,255,.5) 0deg,rgba(255,255,255,0) 60deg,rgba(255,255,255,0) 310deg,rgba(255,255,255,.5) 360deg)'}
 ]
 
 useAnimate(animateBtn,keyframes,2000)
@@ -121,7 +130,6 @@ const { distanceX,isSwiping, direction } = usePointerSwipe(swiper,{
   onSwipeEnd(e:PointerEvent, direction) {
 if(distanceX.value<0 &&  distanceX.value && (Math.abs(distanceX.value)/ (offsetWidth.value as number))>0.4) {
 left.value = '100%'
-// opacity.value = 0
 next()
 }else {
 reset()
@@ -212,7 +220,7 @@ $rotate:0deg;
     // animation: gradient  2s   infinite;
     &:after {
       display: block;
-      content: 'test';
+      content: attr(data-name);
       position: absolute;
      left: 0;
      top: 0;
