@@ -1,0 +1,62 @@
+$namespase: 'xm' !default;
+$block: '-' !default;
+$element: '__' !default;
+$modifer: '--' !default;
+$base-bg-color: skyblue;
+$card-color:#fcfaf7;
+$btn--primary-bg: #007bff;
+$btn--primary-disable: #8bb8fa;
+@mixin btn--primary {
+  background-color: $btn--primary-bg;
+  border-radius: 5px;
+  // min-width: 80px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  // border-color: $btn--primary-bg;
+  color: #fff;
+  &:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  &:focus, &.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+}
+
+@mixin btn--primary-disable {
+  background-color: $btn--primary-disable;
+  &:hover {
+  background-color: $btn--primary-disable;
+
+  }
+}
+
+@mixin bfc {
+  height:100%;
+  overflow:hidden;
+}
+@mixin b ($dec) {
+	$e: $namespase + $block + $dec;
+	.#{$e} {
+		@content;
+	}
+}
+
+@mixin e ($dec) {
+  $parent:&;
+@at-root {
+  .#{$parent+$element+$dec} {
+    @content;
+    }
+}
+}
+
+@mixin m ($dec) {
+  $parent:&;
+@at-root {
+  .#{$parent+$modifer+$dec} {
+    @content;
+    }
+}
+}
+
