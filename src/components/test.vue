@@ -17,6 +17,7 @@ interface RestaurantItem {
   value: string
   link: string
 }
+type Rec = Record<string,any>
 const state2 = ref('')
 const restaurants = ref<RestaurantItem[]>([])
 const querySearch = (queryString: string, cb: any) => {
@@ -33,7 +34,6 @@ const createFilter = (queryString: string) => {
     )
   }
 }
-//[ ]
 const loadAll = () => {
   return [
     { value: 'vue', link: 'https://github.com/vuejs/vue' },

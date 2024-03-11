@@ -7,6 +7,7 @@ import 'virtual:uno.css'
 import '@unocss/reset/normalize.css'
 import 'element-plus/dist/index.css'
 import {createPinia} from 'pinia'
+import 'virtual:svg-icons-register'
 const pinia  =createPinia()
 
 createApp(App).use(Router).use(pinia).use(Ele).mount('#app')

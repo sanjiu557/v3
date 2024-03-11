@@ -14,7 +14,7 @@ interface RestaurantItem {
   value: string
   link: string
 }
-type Rest = Record<string,any>
-type res = RestaurantItem extends Rest ? true : false
+declare type Rest = Record<string,any>
+declare type isRest = RestaurantItem extends Rest ? true : false
 
 

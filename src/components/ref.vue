@@ -6,6 +6,7 @@
  {{ person2.name}}
   </div>
   <div ref="zs">这是在ref上的内容</div>
+  <div> {{ xiaoming }} -- 这是customRef</div>
   <button @click="change">change</button>
   <router-view></router-view>
 </template>
@@ -51,6 +52,7 @@ return customRef((track,trigger)=>{
   }
 })
   }
+  const xiaoming = myRef<string>('小明')
 </script>
 
 <style scoped>
