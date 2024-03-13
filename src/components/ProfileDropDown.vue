@@ -8,7 +8,7 @@
      <div class="profile-title relative flex items-center">
       <img src="src/assets/images/people/avator.jpg" class=" w-50px h-50px ml-25px"  alt="">
       <div class="title-info m-l-20px flex-1">
-          <div>整个羊村我最膻</div>
+          <div class="font-s-15 font-550 mb-6px">整个羊村我最膻</div>
           <div>清早起来去~</div>
       </div>
      </div>

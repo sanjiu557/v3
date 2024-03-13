@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-12px">
     <div class="recommend_list-item m-b-12px">
       <h3>{{ info.title}}</h3>
       <div class="tem-content flex">

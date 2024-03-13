@@ -3,7 +3,7 @@
     <el-button type="primary" size="default" plain @click="">
       <SvgIcon name="ion:caret-up"/>
       <span class="m-r-3px m-l-3px">赞同</span>
-       {{ $props.actionInfo.favorite_count }}
+       {{props.actionInfo.favorite_count }}
     </el-button>
     <el-button type="primary" size="default" plain @click="">
       <SvgIcon name="ion:caret-down"/>
@@ -57,7 +57,7 @@
     <Modal  @close="handleClose"  :showClose="true" width="500px" :showFooter="false" name="张三" :show="show">
      
         <div class="collect_modal flex flex-col items-center color-#000" v-if="!isGenerated">
-          <h3 >添加收藏</h3>
+          <h3 class="mb-12px">添加收藏</h3>
           <div class="color-#8491a5 font-s-13">你可以创建多个收藏夹，将答案分类收藏</div>
  <button class="btn genBtn w-200px bg-#1772f6 m-t-60px" @click="isGenerated = true">创建收藏夹</button>
  <button class="btn cancelBtn w-200px color-#8491a5 mt-18px" @click="handleClose">取消</button>
@@ -91,7 +91,7 @@
 <script setup lang="ts">
 import SvgIcon from './SvgIcon.vue';
 import {ref} from 'vue'
-import Modal from 'S/utils/DefineModal';
+// import Modal from 'S/utils/DefineModal';
 
 
 const show =ref(false)
