@@ -21,9 +21,15 @@ const Modal = defineComponent(
   return ()=>(<>
   {props.show?
     <div class={[styles.modal,styles['flex_center']]} >
-    <div class={[styles['modal-content'],styles['flex_center']]} style={{width: props.width ?? '100%'}}>
-     {/* <div>{slots.default && slots.default()}</div> */}
-     {slots.default && slots.default()}
+    <div class={[styles['modal-content'],styles['flex_center']]} style={{width: props.width ?? 'auto'}}>
+       {slots.default ? slots.default() : 
+       <>
+       <div class={styles['modal-header']}>{slots.header && slots.header()}</div>
+       <div class={styles['modal-body']}>{slots.body && slots.body()}</div>
+       </>
+       }
+     
+     {/* {slots.default && slots.default()}  */}
     <div class={[styles['modal-close'],props.showClose?false:styles.hide]} onClick={handleClose}></div>
     <div class={styles['modal-footer']}>    
     {(slots.footer && slots.footer()) ?? 

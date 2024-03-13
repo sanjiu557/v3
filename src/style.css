@@ -1,8 +1,11 @@
-html,body,#app{
+html,body,#app,ul,li,h1,h2,h3,h4,h5{
   margin: 0;
   padding: 0;
   /* height: 100%; */
   /* overflow: hidden; */
+}
+#app {
+  min-height: 100vh;
 }
 * {
   list-style: none;
